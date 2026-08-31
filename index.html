@@ -879,7 +879,16 @@ function addReference(){
 
     const applicationId = makeApplicationId();
     document.getElementById('application-id').value = applicationId;
-    document.getElementById('submitted-at').value = new Date().toISOString();
+    document.getElementById('submitted-at').value = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'America/New_York',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: true
+}).format(new Date());
 
     const data = new FormData(form);
     const encoded = new URLSearchParams(data).toString();
